@@ -2,6 +2,10 @@ package com.parkingsystem;
 
 import java.util.Map;
 
+/*
+* The class of Operator
+*
+* */
 public class Operator {
 
     //Attributes

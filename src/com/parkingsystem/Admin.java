@@ -27,19 +27,23 @@ public class Admin {
 
     //Attributes
     public String name = "Admin";
+
+    // location of files which store the operators info and parking lot info.
     public String operatorFileLocaion = "src/com/parkingsystem/operatorsList.txt";
     public String parkinglotFileLocaion = "src/com/parkingsystem/parkinglotList.txt";
 
+    // the varible store the infos of operator and parking lot
     public Map<String, Operator> operatorMap;
     public Map<String, ParkingLot> parkingLotMap;
 
     public Admin() {
         // TODO: Change to read from database
+        // load the oprator and parking lot data from the File System
         operatorMap = loadOperatorFile(operatorFileLocaion);
         parkingLotMap = loadParkingLotFile(parkinglotFileLocaion);
     }
 
-    // Show the messages for Admin Account
+    // Welcome messages for the Admin User
     public void showMessages() throws IOException {
 
         System.out.println("== Welcome to the Parking Lot System : Admin==");
@@ -52,22 +56,28 @@ public class Admin {
         Scanner sc = new Scanner(System.in);
         int i = sc.nextInt();
 
+        // TODO: All Operations related to the Operator should re-code under a new class: OperatorOp
         while (i != 0){
 
             if(i == 1){
+                // Show the operation list
                 getAllOperatorInfos();
             }
             if(i == 2){
+                // Add a new operator
                 AddOperator();
             }
             if(i == 3){
+                // Delete operator
                 DeleteOperator();
             }
             if(i == 4){
+                // TODO: All Operations related to the parking lot should re-code under a new class: ParkingLotOp
+                // Show the parking lot list
                 getAllParkingLotInfos();
             }
 
-
+            // Creating the loop for the system input
             System.out.println("== Welcome to the Parking Lot System : Admin==");
             System.out.println("Press 1 -> List all available operators infos ");
             System.out.println("Press 2 -> Add new Operator");
@@ -80,6 +90,7 @@ public class Admin {
         }
     }
 
+    // Function:  Print all the Operator's info
     public void getAllOperatorInfos(){
         System.out.println("== The Operator Infos ==");
         System.out.println("ID\t UserName\t ParkingLots ID");
@@ -104,6 +115,7 @@ public class Admin {
         int i = sc.nextInt();
     }
 
+    // Function:  Add operator
     public void AddOperator(){
         System.out.println("== Add Operator ==");
 
@@ -140,7 +152,7 @@ public class Admin {
         int i = sc.nextInt();
     }
 
-
+    // Function: DeleteOperator;
     public void DeleteOperator(){
         System.out.println("== Delete Operator ==");
 
@@ -164,6 +176,7 @@ public class Admin {
 
     }
 
+    // Function: Show all parking lots infos
     public void getAllParkingLotInfos(){
         System.out.println("== The ParkingLot Infos ==");
         System.out.println("ID\t Rare\t Space");
@@ -182,8 +195,9 @@ public class Admin {
         int i = sc.nextInt();
     }
 
+
     // Help functions
-    // From the file system to load the operatior infos
+    // Load the operatior infos from the file system
     public Map<String, Operator> loadOperatorFile(String operatorFileLocaion) {
         Map<String, Operator> operatorMap = new HashMap<String, Operator>();
 
@@ -228,6 +242,7 @@ public class Admin {
         return operatorMap;
     }
 
+    // Load the parking lot infos from the file system
     public Map<String, ParkingLot> loadParkingLotFile(String operatorFileLocaion) {
         Map<String, ParkingLot> parkingLotMap = new HashMap<String, ParkingLot>();
 
@@ -265,6 +280,8 @@ public class Admin {
         return parkingLotMap;
     }
 
+
+    // Save the operators' infos to the file system
     public void SavetoFileSystem(){
         File file = new File("src/com/parkingsystem/operatorsList.txt");
 
@@ -295,8 +312,5 @@ public class Admin {
         }
 
     }
-
-
-
 
 }

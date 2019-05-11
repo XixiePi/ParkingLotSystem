@@ -7,6 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/*
+ * The class of Operator User
+ *
+ * This calss is responsible for control the system flow of Opeator User.
+ *
+ * */
+
 public class OperatorCons {
     public String operatorFileLocaion = "src/com/parkingsystem/operatorsList.txt";
     public  Map<String, Operator> operatorMap;
